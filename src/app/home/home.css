@@ -1,0 +1,380 @@
+/* Target the root HTML and Body */
+html, body {
+  height: 100%;       /* Ensures the background covers the full screen */
+  margin: 0;          /* Removes the default browser margin */
+  padding: 0;         /* Removes the default browser padding */
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  min-height: calc(100vh - 80px); /* Subtract navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  background-color: var(--bg-white);
+  transition: var(--transition);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split screen layout */
+  gap: 4rem;
+  max-width: 1200px;
+  align-items: center;
+}
+
+.hero-text .greeting {
+  font-size: 1.5rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.hero-text .name {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.hero-text .title {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.cta-button {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  background-color: var(--primary-navy);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+}
+
+/* Hero Visual / Placeholder Box */
+.hero-visual .image-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #e5e7eb;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  border: 2px dashed #9ca3af;
+}
+
+/* --- ABOUT SECTION --- */
+.about-section {
+  padding: 100px 5%;
+  background-color: var(--bg-white);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-navy);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+}
+
+.placeholder-box {
+  width: 100%;
+  height: 500px;
+  background-color: #d1d5db;
+  border-radius: 15px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+/* --- SKILLS CARDS --- */
+/* Container Layout */
+.section-container {
+  max-width: none; /* Remove the width constraint */
+  margin: 0 auto;
+  padding: 0 5%; /* Add horizontal padding instead */
+}
+
+.section-title {
+  font-size: 3rem;
+  font-family: var(--font-header);
+  margin-bottom: 2rem;
+}
+
+/* About Grid (Image + Text) */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profile-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #E5E7EB;
+  border: 2px solid #94A3B8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: #64748B;
+}
+
+.bio-intro {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+/* CSS for Soft Skills */
+.skills-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* The Grey Skill Cards */
+.skill-card {
+  background-color: #b12930; /* Light grey from wireframe */
+  padding: 1.5rem 2.5rem 2.5rem 2.5rem;
+  border-radius: 12px;
+}
+
+.skill-card h4 {
+  font-size: 2.5rem;
+  margin-top: 0; /* REMOVES the default browser gap at the top */
+  margin-bottom: 1.5rem;
+  text-align: left; /* Header text alignment from wireframe */
+  color:#fff;
+}
+
+/* Soft Skills: White items */
+.soft-skill-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.soft-skill-item strong {
+  display: block;
+  font-size: 1.5rem; /* Make the title a bit bigger */
+  font-weight: 900;
+  margin-bottom: 5px;
+  color:#b12930;
+}
+
+.soft-skill-item p {
+  font-size: 1rem;
+  color: #000000;
+  margin: 5px 0 0 0;
+}
+
+/* CSS for Tech Stack */
+.tech-stack h4 {
+  font-size: 2.5rem; /* Matches the Soft Skills title size */
+  margin-top: 0;   /* Pulls it to the top of the container */
+  margin-bottom: 2rem;
+  text-align: right; 
+}
+
+.tech-category h5 {
+  font-size: 2rem; /* Increased from 1.2rem */
+  margin: 2rem 0 1rem 0; /* More spacing above/below */
+  font-family: var(--font-header);
+  font-weight: 700;
+  color:#fff;
+}
+
+/* Progress Bar Styles */
+.progress-item {
+  margin-bottom: 1.5rem;
+}
+
+.progress-item:last-child {
+  margin-bottom: 0;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tech-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tech-percentage {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress Bar Fill */
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fff 0%, #f0f0f0 100%);
+  border-radius: 10px;
+  transition: width 1.5s ease-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fillBar 1.5s ease-out;
+}
+
+/* Animation on page load */
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .about-grid, .skills-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CSS for CTA */
+.contact-cta {
+  padding: 80px 10%;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  background-color: var(--bg-primary);
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 2px solid var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--accent);
+  border-radius: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.contact-item a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.cta-socials {
+  display: flex;
+  gap: 25px;
+  margin: 30px 0;
+  font-size: 1.8rem;
+}
+
+.cta-socials a {
+  color: var(--text-primary);
+  transition: transform 0.2s;
+}
+
+.cta-socials a:hover {
+  transform: translateY(-5px);
+  color: var(--accent);
+}
+
+.project-button {
+  padding: 15px 35px;
+  background-color: #B2B2B2; /* Matching the grey button in wireframe */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.project-button:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
