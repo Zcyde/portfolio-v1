@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact {
+export class Contact implements AfterViewInit, OnDestroy {
+
+  private revealObserver!: IntersectionObserver;
 
   faqs = [
     {
@@ -26,8 +28,39 @@ export class Contact {
     }
   ];
 
-  toggleFaq(index: number) {
-  this.faqs[index].open = !this.faqs[index].open;
-}
+  ngAfterViewInit(): void {
+    setTimeout(() => this.setupScrollReveal(), 300);
+  }
 
+  ngOnDestroy(): void {
+    this.revealObserver?.disconnect();
+  }
+
+  private setupScrollReveal(): void {
+    this.revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            this.revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up')
+      .forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('in-view');
+        } else {
+          this.revealObserver.observe(el);
+        }
+      });
+  }
+
+  toggleFaq(index: number) {
+    this.faqs[index].open = !this.faqs[index].open;
+  }
 }

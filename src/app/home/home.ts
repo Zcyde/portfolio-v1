@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ScrollService } from '../scroll';
 
 @Component({
@@ -27,7 +27,8 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private ngZone: NgZone,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {}
@@ -119,6 +120,19 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     }
     setTimeout(() => this.typeEffect(), this.typingSpeed);
   }
+
+  goToContact() {
+  this.router.navigate(['/contact'], { fragment: 'contact' }).then(() => {
+    setTimeout(() => {
+      const element = document.getElementById('contact');
+      if (element) {
+        const navbarHeight = 80;
+        const elementTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementTop - navbarHeight, behavior: 'smooth' });
+      }
+    }, 300);
+  });
+}
 
   scrollTo(section: string) {
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });

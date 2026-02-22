@@ -1,6 +1,6 @@
 <div class="page-bg">
   <section class="resume-section" id="resume">
-    <div class="resume-header">
+    <div class="resume-header reveal-up">
       <div class="resume-header-left">
         <h1 class="section-title">My Resume</h1>
       </div>
@@ -9,7 +9,7 @@
       </a>
     </div>
 
-    <div class="magazine-grid">
+    <div class="magazine-grid reveal-up">
 
       <!-- RED LEFT PANEL -->
       <div class="mag-left">
@@ -160,10 +160,10 @@
 
       <!-- LEFT -->
       <div class="contact-left">
-        <h1 class="contact-heading">Let's collaborate</h1>
-        <p class="contact-subtext">Do you have a project in mind? Feel free to get in touch. I'm always open to new collaborations, discussions, and learnings!</p>
+        <h1 class="contact-heading reveal-left">Let's collaborate</h1>
+        <p class="contact-subtext reveal-left">Do you have a project in mind? Feel free to get in touch. I'm always open to new collaborations, discussions, and learnings!</p>
 
-        <div class="contact-methods">
+        <div class="contact-methods reveal-up">
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
             <a href="mailto:eldrinjoshpineda@gmail.com">eldrinjoshpineda&#64;gmail.com</a>
@@ -174,13 +174,13 @@
           </div>
         </div>
 
-        <div class="cta-socials">
+        <div class="cta-socials reveal-up">
           <a href="https://github.com/Zcyde" target="_blank"><i class="fab fa-github"></i></a>
           <a href="https://www.linkedin.com/in/eldrin-josh-pineda-24405433a/" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.instagram.com/eldrin.pineda/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-list reveal-up">
           @for (faq of faqs; track $index) {
             <div class="faq-item" [class.open]="faq.open">
               <button class="faq-btn" (click)="toggleFaq($index)">
@@ -197,7 +197,7 @@
 
       <!-- RIGHT -->
       <div class="contact-right">
-        <div class="contact-form-card">
+        <div class="contact-form-card reveal-right">
           <div class="form-group">
             <label class="form-label">Full Name</label>
             <input type="text" class="form-input" placeholder="Enter your name"/>
