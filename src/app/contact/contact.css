@@ -6,6 +6,14 @@
 }
 
 /* ── RESUME HEADER ── */
+.section-title {
+  font-size: 3rem;
+  font-family: var(--font-header);
+  margin-bottom: 3rem;
+  text-align: left;
+  color: var(--accent);
+}
+
 .resume-header {
   display: flex;
   align-items: flex-end;
@@ -28,6 +36,7 @@
   background-size: 40px 40px;
   overflow: hidden;
   padding-bottom: 3rem;
+  padding-top: 3rem;
 }
 
 /* ── DOWNLOAD BUTTON ── */
@@ -327,6 +336,7 @@
   color: var(--accent);
   line-height: 1.1;
   margin-bottom: 1rem;
+  font-family: var(--font-header);
 }
 
 .contact-subtext {
