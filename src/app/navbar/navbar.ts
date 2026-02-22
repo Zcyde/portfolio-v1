@@ -18,18 +18,21 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
 
   isDarkMode = false;
   activeSection: string = 'home';
+  private isManualNavigation = false;
 
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    private cdr: ChangeDetectorRef,       // *** NEW ***
+    private cdr: ChangeDetectorRef,
     private scrollService: ScrollService
   ) {
     effect(() => {
-      this.activeSection = this.scrollService.activeSection();
-      this.cdr.detectChanges();            // *** NEW: force re-render ***
-      // Delay indicator update until after DOM reflects new active class
-      setTimeout(() => this.updateIndicatorFromRoute(), 60);
+      const section = this.scrollService.activeSection();
+      if (!this.isManualNavigation) {
+        this.activeSection = section;
+        this.cdr.detectChanges();
+        setTimeout(() => this.updateIndicatorFromRoute(), 60);
+      }
     });
   }
 
@@ -38,10 +41,8 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
       const url = event.urlAfterRedirects;
-      if (!url.startsWith('/home') && url !== '/') {
-        this.updateActiveSection(url);
-        this.cdr.detectChanges();          // *** NEW ***
-      }
+      this.updateActiveSection(url);
+      this.cdr.detectChanges();
       setTimeout(() => this.updateIndicatorFromRoute(), 100);
     });
   }
@@ -57,9 +58,11 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
       this.activeSection = 'projects';
     } else if (url.includes('/contact#resume')) {
       this.activeSection = 'resume';
-    } else if (url.includes('/contact')) {
+    } else if (url.includes('/contact#contact') || url.includes('/contact')) {
       this.activeSection = 'contact';
-    }else if (url === '/' || url.includes('/home')) {
+    } else if (url.includes('/home#about')) {
+      this.activeSection = 'about';
+    } else if (url.includes('/home#home') || url.includes('/home') || url === '/') {
       this.activeSection = 'home';
     }
   }
@@ -95,11 +98,12 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
 
   scrollToSection(sectionId: string, event: Event) {
     event.preventDefault();
+    this.isManualNavigation = true;
     this.activeSection = sectionId;
 
-    const route = (sectionId === 'resume') ? '/contact' : (sectionId === 'contact') ? '/contact' : '/home';
+    const route = (sectionId === 'resume' || sectionId === 'contact') ? '/contact' : '/home';
 
-    this.router.navigate([route], {fragment: sectionId}).then(() => {
+    this.router.navigate([route], { fragment: sectionId }).then(() => {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -108,10 +112,12 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
           window.scrollTo({
             top: elementTop - navbarHeight,
             behavior: 'smooth'
-          }); 
+          });
         } else if (sectionId === 'home') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        // re-enable scroll service after navigation settles
+        setTimeout(() => { this.isManualNavigation = false; }, 1000);
       }, 100);
     });
   }
