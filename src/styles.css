@@ -1,41 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================================================
+   GLOBAL VARIABLES & BASE STYLES
+   ============================================================ */
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f1f1f1;
+  --bg-card: #ffffff;
   --text-primary: #000000;
   --text-secondary: #666666;
-  --accent: #b0272f;
+  --text-dark: #1E293B;
+  --accent: #b12930;
+  --accent-dark: #8a2429;
+  --blue-accent: #b12930;
+  --border-color: rgba(177, 41, 48, 0.12);
+  --dot-color: rgba(177, 41, 48, 0.08);
   --font-header: 'Inter', sans-serif;
   --font-content: 'DM Sans', sans-serif;
+  --transition: all 0.3s ease;
 }
 
-/* Apply the fonts globally */
+[data-theme="dark"] {
+  --bg-primary:    #0a0f1e;
+  --bg-secondary:  #0d1528;
+  --bg-card:       #111d35;
+  --text-primary:  #e8edf5;
+  --text-secondary: #7a8aaa;
+  --text-dark:     #e8edf5;
+  --accent:        #b12930;
+  --accent-dark:   #8a2429;
+  --blue-accent:   #4d7cfe;
+  --border-color:  rgba(77, 124, 254, 0.18);
+  --dot-color:     rgba(77, 124, 254, 0.06);
+}
+
 body {
-  font-family: var(--font-content); /* DM Sans for general content */
+  font-family: var(--font-content);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-
   margin: 0;
   padding: 0;
   padding-top: 90px;
   overflow-x: hidden;
 }
 
-/* Inter for all Headers */
 h1, h2, h3, h4, h5, h6, .brand-name {
   font-family: var(--font-header);
-  font-weight: 700; /* Bold for headers */
-  letter-spacing: -0.02em; /* Inter looks great slightly tighter */
-}
-
-[data-theme="dark"] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --text-primary: #ffffff;
-  --text-secondary: #b0b0b0;
-  --accent: #b0272f; /* Your red stays the same */
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 *,
@@ -45,11 +57,404 @@ h1, h2, h3, h4, h5, h6, .brand-name {
 }
 
 html {
-  scroll-behavior: smooth; /* Makes the jump a smooth slide */
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-/* This prevents the "About Me" title from being hidden under the navbar */
 section[id] {
-  scroll-margin-top: 80px; /* Adjust this to match your navbar height */
+  scroll-margin-top: 80px;
+}
+
+
+/* ============================================================
+   NAVBAR DARK MODE
+   ============================================================ */
+[data-theme="dark"] .navbar {
+  background-color: #0d1528 !important;
+  border-bottom: 1px solid rgba(77, 124, 254, 0.18);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .nav-links li a {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .nav-links li a.active {
+  background: #b12930 !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .nav-links li a:hover:not(.active) {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .nav-indicator {
+  background: rgba(77, 124, 254, 0.15) !important;
+}
+
+[data-theme="dark"] .dark-mode {
+  color: #e8edf5 !important;
+}
+
+
+/* ============================================================
+   HOME PAGE DARK MODE
+   ============================================================ */
+[data-theme="dark"] .hero-section {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+}
+
+[data-theme="dark"] .hero-text .greeting {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .hero-text .title {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] #typingText::after {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .logo-image {
+  filter: drop-shadow(0 20px 40px rgba(77, 124, 254, 0.25)) drop-shadow(0 0 60px rgba(177, 41, 48, 0.2)) !important;
+}
+
+[data-theme="dark"] .logo-glow {
+  background: radial-gradient(circle, rgba(77, 124, 254, 0.15) 0%, transparent 70%) !important;
+}
+
+[data-theme="dark"] .about-section {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+  border-top: 1px solid rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .profile-photo {
+  filter: drop-shadow(0 12px 30px rgba(77, 124, 254, 0.2)) drop-shadow(0 4px 10px rgba(0,0,0,0.4)) !important;
+}
+
+[data-theme="dark"] .bio-text {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .skill-card-item {
+  background: #111d35 !important;
+  border: 1px solid rgba(77, 124, 254, 0.18) !important;
+  border-top: 4px solid #b12930 !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .skill-card-item:hover {
+  box-shadow: 0 10px 30px rgba(77, 124, 254, 0.12) !important;
+}
+
+[data-theme="dark"] .skill-card-title {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .skill-card-description {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .category-label {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .pill-icon img {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)) brightness(0.9) !important;
+}
+
+[data-theme="dark"] .pill-badge:hover .pill-icon img {
+  filter: drop-shadow(0 8px 20px rgba(77, 124, 254, 0.4)) brightness(1.1) !important;
+}
+
+[data-theme="dark"] .pill-name {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .contact-cta {
+  background-color: #0d1528 !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+  border-top: 1px solid rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .contact-item {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .contact-item i {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .contact-item a {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .cta-socials a {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .cta-socials a:hover {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .code-topbar {
+  background: #1a1f2e !important;
+}
+
+[data-theme="dark"] .code-title {
+  color: #6b7a9e !important;
+}
+
+[data-theme="dark"] .code-body {
+  background: #070d1a !important;
+}
+
+
+/* ============================================================
+   PROJECTS PAGE DARK MODE
+   ============================================================ */
+[data-theme="dark"] .hero-left {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+  border-right-color: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .hero-eyebrow {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .hero-eyebrow::before {
+  background: #4d7cfe !important;
+}
+
+[data-theme="dark"] .featured-wrap {
+  border-top-color: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .featured-thumb {
+  background: #060c1a !important;
+  border-right-color: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .featured-thumb:hover img {
+  filter: grayscale(0%) brightness(0.85) !important;
+}
+
+[data-theme="dark"] .featured-info {
+  background: #111d35 !important;
+}
+
+[data-theme="dark"] .info-desc {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .tech-tag {
+  background: rgba(77, 124, 254, 0.1) !important;
+  color: #4d7cfe !important;
+  border: 1px solid rgba(77, 124, 254, 0.2) !important;
+}
+
+[data-theme="dark"] .projects-section {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+  border-top-color: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .section-header {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .section-header::after {
+  background: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .project-row {
+  border-top-color: rgba(77, 124, 254, 0.15) !important;
+}
+
+[data-theme="dark"] .project-row:hover {
+  background: rgba(77, 124, 254, 0.03) !important;
+}
+
+[data-theme="dark"] .row-thumb {
+  background: #060c1a !important;
+  border-right-color: rgba(77, 124, 254, 0.15) !important;
+}
+
+[data-theme="dark"] .project-row:hover .row-thumb img {
+  filter: grayscale(0%) brightness(0.85) !important;
+}
+
+[data-theme="dark"] .project-row.row-even .row-thumb {
+  border-left-color: rgba(77, 124, 254, 0.15) !important;
+}
+
+[data-theme="dark"] .row-body {
+  background: #111d35 !important;
+}
+
+[data-theme="dark"] .row-desc {
+  color: #7a8aaa !important;
+}
+
+
+/* ============================================================
+   CONTACT PAGE DARK MODE
+   ============================================================ */
+[data-theme="dark"] .page-bg {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+}
+
+[data-theme="dark"] .resume-section {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+}
+
+[data-theme="dark"] .magazine-grid {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5) !important;
+}
+
+[data-theme="dark"] .mag-right {
+  background: #111d35 !important;
+}
+
+[data-theme="dark"] .entry h3 {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .entry .sub {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .entry ul li {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .mag-divider {
+  background: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .tool-badge:hover .tool-icon img {
+  filter: drop-shadow(0 6px 16px rgba(77, 124, 254, 0.4)) !important;
+}
+
+[data-theme="dark"] .tool-name {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .contact-section {
+  background-color: #0a0f1e !important;
+  background-image: radial-gradient(circle, rgba(77, 124, 254, 0.06) 2px, transparent 2px) !important;
+}
+
+[data-theme="dark"] .contact-subtext {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .faq-list {
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] .faq-item {
+  border-color: rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .faq-item.open {
+  border-color: #b12930 !important;
+  background-color: #111d35 !important;
+}
+
+[data-theme="dark"] .faq-btn {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .faq-answer p {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .contact-form-card {
+  background: #111d35 !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4) !important;
+}
+
+[data-theme="dark"] .form-label {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .form-input {
+  background: #0d1528 !important;
+  border-color: rgba(77, 124, 254, 0.18) !important;
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .form-input:focus {
+  background: #0d1528 !important;
+  box-shadow: 0 0 0 3px rgba(177,41,48,0.15) !important;
+}
+
+[data-theme="dark"] .form-input::placeholder {
+  color: #7a8aaa !important;
+}
+
+
+/* ============================================================
+   FOOTER DARK MODE
+   ============================================================ */
+[data-theme="dark"] .footer-container {
+  background-color: #0d1528 !important;
+  border-top: 1px solid rgba(77, 124, 254, 0.18) !important;
+}
+
+[data-theme="dark"] .footer-section h2.brand-name {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .footer-section h3 {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .footer-section p {
+  color: #7a8aaa !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .footer-links a {
+  color: #7a8aaa !important;
+}
+
+[data-theme="dark"] .footer-links a:hover {
+  color: #e8edf5 !important;
+  background: rgba(77, 124, 254, 0.1) !important;
+}
+
+[data-theme="dark"] .footer-contact-item {
+  color: #7a8aaa !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .footer-contact-item:hover {
+  color: #e8edf5 !important;
+}
+
+[data-theme="dark"] .footer-contact-item i {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .social-icons a {
+  color: #7a8aaa !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .social-icons a:hover {
+  color: #4d7cfe !important;
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid rgba(77, 124, 254, 0.18) !important;
+  color: #7a8aaa !important;
+  opacity: 1 !important;
 }

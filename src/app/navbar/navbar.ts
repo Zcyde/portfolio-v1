@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, NgZone, ChangeDetectorRef, effect } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, NgZone, ChangeDetectorRef, effect, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { ScrollService } from '../scroll';
   imports: [CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
+  encapsulation: ViewEncapsulation.None  // needed so navbar CSS applies globally
 })
 export class Navbar implements OnInit, AfterViewInit, OnDestroy {
 
@@ -35,6 +36,16 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Restore saved theme on load so it persists across navigation
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      this.isDarkMode = true;
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      this.isDarkMode = false;
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
@@ -91,7 +102,9 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
-    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme); // persist across navigation
   }
 
   scrollToSection(sectionId: string, event: Event) {

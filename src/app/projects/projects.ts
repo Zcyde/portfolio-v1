@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 interface Project {
   id: number;
@@ -14,7 +14,7 @@ interface Project {
   selector: 'app-projects',
   imports: [],
   templateUrl: './projects.html',
-  styleUrl: './projects.css'
+  styleUrl: './projects.css',
 })
 export class Projects implements AfterViewInit, OnDestroy {
 
@@ -40,7 +40,6 @@ export class Projects implements AfterViewInit, OnDestroy {
       featured: true,
       thumbnail: 'DoMore-thumbnail.png'
     },
-
     {
       id: 2,
       title: 'DineSmart — Web-based Reservation System',
@@ -49,7 +48,6 @@ export class Projects implements AfterViewInit, OnDestroy {
       link: 'https://www.figma.com/proto/FEIF2RApyICgdIuohSyzLr/DineSmart-Design?page-id=0%3A1&node-id=1-222&p=f&viewport=25%2C181%2C0.15&t=0zE2WED8ThXKqQGg-1&scaling=min-zoom&content-scaling=fixed',
       thumbnail: 'DineSmart-thumbnail.png'
     },
-
     {
       id: 3,
       title: 'Sole Purpose — Static E-commerce Shoe Website',

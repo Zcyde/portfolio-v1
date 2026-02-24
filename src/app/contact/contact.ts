@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, NgZone, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ScrollService } from '../scroll';
@@ -76,10 +76,8 @@ export class Contact implements OnInit, AfterViewInit, OnDestroy {
         if (entry.isIntersecting) {
           const id = entry.target.id;
 
-          // During manual nav to contact, only block resume from taking over
           if (this.isManualNavigation && id === 'resume') return;
 
-          // Clear manual nav flag once user scrolls to any section naturally
           this.isManualNavigation = false;
           this.scrollService.intentSection.set('');
 
