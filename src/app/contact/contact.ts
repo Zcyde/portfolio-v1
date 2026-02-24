@@ -1,7 +1,8 @@
-import { Component, AfterViewInit, OnDestroy, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, NgZone, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ScrollService } from '../scroll';
+import { Title, Meta } from '@angular/platform-browser'; 
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({
@@ -45,10 +46,18 @@ export class Contact implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private ngZone: NgZone,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private titleService: Title, 
+    private metaService: Meta    
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Contact | Eldrin Josh Pineda');
+    this.metaService.updateTag({ name: 'description', content: 'Get in touch with Eldrin Josh Pineda' });
+    this.metaService.updateTag({ property: 'og:title', content: 'Contact & Resume | Eldrin Josh Pineda' });
+    this.metaService.updateTag({ property: 'og:description', content: 'Get in touch with Eldrin Josh Pineda. View his resume, certifications, tech stack, and send a message directly through the contact form.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+
     const intent = this.scrollService.intentSection();
     if (intent === 'contact') {
       this.isManualNavigation = true;

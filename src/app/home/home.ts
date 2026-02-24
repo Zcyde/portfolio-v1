@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ScrollService } from '../scroll';
+import { Title, Meta } from '@angular/platform-browser'; // ✅ SEO
 
 @Component({
   selector: 'app-home',
@@ -29,9 +30,17 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     private ngZone: NgZone,
     private scrollService: ScrollService,
     private router: Router,
+    private titleService: Title,   
+    private metaService: Meta      
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Eldrin Josh Pineda | IT Student');
+    this.metaService.updateTag({ name: 'description', content: 'Portfolio of Eldrin Josh Pineda — third year IT Web-Development student, aspiring Full-Stack Developer and Cloud Engineer based in the Philippines.' });
+    this.metaService.updateTag({ property: 'og:title', content: 'Eldrin Josh Pineda | IT Student' });
+    this.metaService.updateTag({ property: 'og:description', content: 'Portfolio of Eldrin Josh Pineda — third year IT Web-Development student, aspiring Full-Stack Developer and Cloud Engineer based in the Philippines.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+
     const intent = this.scrollService.intentSection();
     if (intent === 'about') {
       this.scrollService.activeSection.set('about');
@@ -61,7 +70,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
           const id = entry.target.id;
           const intent = this.scrollService.intentSection();
 
-          // If navigating to 'about', block 'home' from overriding
           if (intent === 'about' && id === 'home') return;
 
           this.scrollService.intentSection.set('');

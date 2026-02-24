@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core'; 
+import { Title, Meta } from '@angular/platform-browser'; 
 
 interface Project {
   id: number;
@@ -16,7 +17,7 @@ interface Project {
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
-export class Projects implements AfterViewInit, OnDestroy {
+export class Projects implements OnInit, AfterViewInit, OnDestroy {
 
   private revealObserver!: IntersectionObserver;
 
@@ -57,6 +58,20 @@ export class Projects implements AfterViewInit, OnDestroy {
       thumbnail: 'SolePurpose-thumbnail.png',
     },
   ];
+
+  constructor(
+    private titleService: Title,
+    private metaService: Meta    
+  ) {}
+
+  ngOnInit(): void {
+    // ✅ SEO: Set page title and meta tags for projects page
+    this.titleService.setTitle('Projects | Eldrin Josh Pineda');
+    this.metaService.updateTag({ name: 'description', content: 'Browse projects by Eldrin Josh Pineda' });
+    this.metaService.updateTag({ property: 'og:title', content: 'Projects | Eldrin Josh Pineda' });
+    this.metaService.updateTag({ property: 'og:description', content: ' Projects by Eldrin Josh Pineda —  FilSafe Enterprises, DoMore Planner, DineSmart, Sole Purpose.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => this.setupScrollReveal(), 300);
