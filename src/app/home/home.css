@@ -571,6 +571,50 @@ html, body {
   .cta-info { padding-left: 0; margin-top: 2rem; }
   .intro-box { grid-template-columns: 1fr; }
   .pills-row { gap: 2.5rem; }
+  .hero-visual {
+    display: none;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .cta-button {
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
+  }
+
+    .profile-photo {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 240px;
+  }
+
+  /* Reduce bio text size */
+  .bio-text {
+    font-size: 1.1rem;
+  }
+
+  /* Fix orphaned skill icons */
+  .pills-row {
+    gap: 2.5rem;
+    justify-content: center;
+  }
+
+  .category-label {
+    text-align: center;
+  }
+
+  .code-body {
+    padding: 16px 18px;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 768px) {

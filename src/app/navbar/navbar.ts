@@ -143,4 +143,15 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
       }, 100);
     });
   }
+
+  menuOpen = false;
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    document.body.style.overflow = this.menuOpen ? 'hidden' : '';
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+    document.body.style.overflow = '';
+  }
 }

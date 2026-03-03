@@ -536,19 +536,80 @@
 
 /* Responsive */
 @media (max-width: 960px) {
-  .magazine-grid { grid-template-columns: 1fr; }
-  .tool-grid { grid-template-columns: repeat(3, 1fr); }
+  .magazine-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mag-left {
+    order: 2;
+  }
+
+  .mag-right {
+    order: 1;
+  }
+
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .resume-section .download-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 860px) {
-  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-  .contact-heading { font-size: 2.2rem; }
+  .contact-inner { 
+    grid-template-columns: 1fr; gap: 40px; 
+  }
+  .contact-heading { 
+    font-size: 2.2rem; 
+  }
+
+  .magazine-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mag-left {
+    order: 2;
+  }
+
+  .mag-right {
+    order: 1;
+  }
+
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .resume-section .download-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 600px) {
-  .resume-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .resume-section .download-btn { width: 100%; justify-content: center; }
-  .tool-grid { grid-template-columns: repeat(3, 1fr); }
-  .contact-form-card { padding: 28px 20px; }
-  .form-submit { width: 100%; justify-content: center; }
+  .resume-header { 
+    flex-direction: column; align-items: flex-start; gap: 16px; 
+  }
+  .resume-section .download-btn { 
+    width: 100%; justify-content: center; 
+  }
+  .tool-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+  .contact-form-card { 
+    padding: 28px 20px; 
+  }
+  .form-submit { 
+    width: 100%; justify-content: center; 
+  }
 }

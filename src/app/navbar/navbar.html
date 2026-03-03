@@ -52,5 +52,43 @@
       <span *ngIf="isDarkMode">☀️</span>
     </button>
 
+    <!-- Burger Menu Button (mobile only) -->
+<button class="burger-menu" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" [class.active]="menuOpen" (click)="closeMenu()"></div>
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav" [class.open]="menuOpen">
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="#" (click)="scrollToSection('home', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'home'">HOME</a>
+        </li>
+        <li>
+          <a href="#" (click)="scrollToSection('about', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'about'">ABOUT</a>
+        </li>
+        <li>
+          <a href="#" (click)="scrollToSection('projects', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'projects'">PROJECTS</a>
+        </li>
+        <li>
+          <a href="/contact" (click)="scrollToSection('resume', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'resume'">RESUME</a>
+        </li>
+        <li>
+          <a href="/contact" (click)="scrollToSection('contact', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'contact'">CONTACT</a>
+        </li>
+
+                <!-- Add this at the bottom of .mobile-nav-links in the drawer: -->
+        <li class="mobile-divider"></li>
+        <li class="mobile-theme-toggle">
+          <button class="mobile-dark-mode" (click)="toggleTheme()">
+            <span>{{ isDarkMode ? '☀️' : '🌙' }}</span>
+            <span class="mobile-theme-label">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

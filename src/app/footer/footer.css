@@ -146,6 +146,13 @@
 }
 
 /* 7. Responsive Design */
+@media (max-width: 968px) {
+  .footer-contact-info {
+    justify-content: center;
+  }
+}
+
+
 @media (max-width: 768px) {
   .footer-content-wrapper {
     padding: 0 5%;
@@ -177,4 +184,9 @@
   .footer-links a {
     font-size: 0.95rem;
   }
+
+   .footer-contact-info {
+    align-items: center;
+  }
 }
+
