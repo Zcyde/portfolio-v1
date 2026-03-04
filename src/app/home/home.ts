@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ScrollService } from '../scroll';
-import { Title, Meta } from '@angular/platform-browser'; // ✅ SEO
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,8 @@ import { Title, Meta } from '@angular/platform-browser'; // ✅ SEO
 export class Home implements OnInit, AfterViewInit, OnDestroy {
   
   private typingRoles = [
-    'Third year IT Web-Development Student',
-    'Aspiring Full-Stack Developer and',
+    // 'Third year IT Web-Development Student',
+    'Full-Stack Developer and',
     'Cloud Engineer'
   ];
   private roleIndex = 0;
