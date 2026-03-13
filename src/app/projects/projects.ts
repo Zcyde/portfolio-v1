@@ -4,9 +4,14 @@ import { Title, Meta } from '@angular/platform-browser';
 interface Project {
   id: number;
   title: string;
+  subtitle: string;
+  role?: string;
+  roleDesc?: string;
   description: string;
   techStack: string[];
   link: string;
+  githubUrl?: string;
+  figmaUrl?: string;
   thumbnail: string;
   featured?: boolean;
 }
@@ -24,38 +29,54 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
   featuredProject: Project = {
     id: 1,
     title: 'FilSafe Enterprises',
-    description: 'Hardcoded client website I designed with complete backend and is SEO optimized.',
+    subtitle: 'Full-Stack Client Website',
+    role: 'Frontend Developer | QA Tester',
+    roleDesc: 'Designed web pages, and performed QA testing across all functions and backend',
+    description: 'Hardcoded client website designed with complete backend and is SEO optimized',
     techStack: ['Angular', 'Node.js', 'MongoDB'],
     link: 'https://filsafe.shop/',
     featured: true,
-    thumbnail: 'Filsafe-thumbnail.png'
+    thumbnail: 'Filsafe-thumbnail.png',
+    githubUrl:'https://github.com/Edtech-bit/FilSafeProject.git',
   };
 
   otherProjects: Project[] = [
     {
       id: 1,
-      title: 'DoMore — Planner Web Application',
-      description: 'A fullstack web-based planner system unifying task and file management into one seamless workspace.',
+      title: 'DoMore',
+      subtitle: 'FULLSTACK PLANNER WEB APP',
+      role:'Lead Frontend Developer',
+      roleDesc:'Led the team on app architecture, flow, and UI/UX direction',
+      description: 'A fullstack web-based planner system unifying task and file management into one seamless workspace',
       techStack: ['Angular', 'Express.js', 'MongoDB',],
       link: 'https://domore-student-planner.netlify.app',
       featured: true,
-      thumbnail: 'DoMore-thumbnail.png'
+      thumbnail: 'DoMore-thumbnail.png',
+      githubUrl: 'https://github.com/Amekouuu/WCWEBSERVER-ADDBASE-Final-Project.git',
     },
     {
       id: 2,
-      title: 'DineSmart — Web-based Reservation System',
-      description: 'A web-based reservation platform UI/UX design for buffets and unlimited type restaurants.',
+      title: 'DineSmart ',
+      subtitle: 'Web-based Reservation System',
+      role:'Project Manager',
+      roleDesc:'Led the team on app flow and UI/UX design',
+      description: 'A web-based reservation platform UI/UX design for buffets and unlimited type restaurants',
       techStack: ['UI/UX', 'Figma'],
       link: 'https://www.figma.com/proto/FEIF2RApyICgdIuohSyzLr/DineSmart-Design?page-id=0%3A1&node-id=1-222&p=f&viewport=25%2C181%2C0.15&t=0zE2WED8ThXKqQGg-1&scaling=min-zoom&content-scaling=fixed',
-      thumbnail: 'DineSmart-thumbnail.png'
+      thumbnail: 'DineSmart-thumbnail.png',
+      figmaUrl: 'https://www.figma.com/proto/FEIF2RApyICgdIuohSyzLr/DineSmart-Design?page-id=0%3A1&node-id=1-222&p=f&viewport=25%2C181%2C0.15&t=0zE2WED8ThXKqQGg-1&scaling=min-zoom&content-scaling=fixed',
     },
     {
       id: 3,
-      title: 'Sole Purpose — Static E-commerce Shoe Website',
-      description: 'A shoe E-commerce website designed with HTML and CSS, focused on clean product presentation and UX.',
+      title: 'Sole Purpose',
+      subtitle: 'Shoe E-commerce website',
+      role:'Own Project',
+      roleDesc:'First project I came up with out of passion, combining my love for shoes and web development',
+      description: 'A shoe E-commerce website designed with HTML and CSS, focused on clean product presentation and UX',
       techStack: ['HTML', 'CSS'],
       link: 'https://solepurposeshop.netlify.app',
       thumbnail: 'SolePurpose-thumbnail.png',
+      githubUrl:'https://github.com/Zcyde/Sole-Purpose.git',
     },
   ];
 

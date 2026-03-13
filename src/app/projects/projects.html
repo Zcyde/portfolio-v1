@@ -8,7 +8,7 @@
     </h1>
   </div>
 
-  <div class="hero-right reveal-right">  <!-- added reveal-right -->
+  <div class="hero-right reveal-right">
     <div class="stat-number">{{ otherProjects.length + 1 }}</div>
     <div class="stat-label">Projects</div>
     <p class="stat-desc">From fullstack websites to UI/UX designs</p>
@@ -17,16 +17,24 @@
 </div>
 
 <!-- ══ FEATURED PROJECT ══ -->
-<div class="featured-wrap">  <!-- removed reveal-up from wrapper -->
+<div class="featured-wrap">
 
-  <div class="featured-thumb reveal-left">  <!-- individual reveal -->
+  <div class="featured-thumb reveal-left">
     <span class="feat-badge">★ Featured</span>
     <img [src]="featuredProject.thumbnail" [alt]="featuredProject.title" />
   </div>
 
-  <div class="featured-info reveal-right">  <!-- individual reveal -->
+  <div class="featured-info reveal-right">
     <h2 class="info-title">{{ featuredProject.title }}</h2>
+    <p class="info-subtitle">{{ featuredProject.subtitle }}</p>
     <p class="info-desc">{{ featuredProject.description }}</p>
+
+    @if (featuredProject.role) {
+      <div class="info-role">
+        <strong>{{ featuredProject.role }}</strong>
+        <p>{{ featuredProject.roleDesc }}</p>
+      </div>
+    }
 
     <div class="tech-stack">
       @for (tech of featuredProject.techStack; track tech) {
@@ -34,13 +42,21 @@
       }
     </div>
 
-    <a [href]="featuredProject.link" class="btn-primary">
-      View Project
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2.5">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
+    <div class="cta-row">
+      <a [href]="featuredProject.link" target="_blank" class="btn-primary">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      @if (featuredProject.githubUrl) {
+        <a [href]="featuredProject.githubUrl" target="_blank" title="View on GitHub" class="btn-icon">
+          <i class="fab fa-github"></i>
+        </a>
+      }
+    </div>
   </div>
 
 </div>
@@ -61,7 +77,15 @@
 
       <div class="row-body reveal-right">
         <h3 class="row-title">{{ project.title }}</h3>
+        <p class="row-subtitle">{{ project.subtitle }}</p>
         <p class="row-desc">{{ project.description }}</p>
+
+        @if (project.role) {
+          <p class="row-role">
+            <strong>{{ project.role }}</strong><br>
+            {{ project.roleDesc }}
+          </p>
+        }
 
         <div class="tech-stack">
           @for (tech of project.techStack; track tech) {
@@ -69,17 +93,30 @@
           }
         </div>
 
-        <a [href]="project.link" target="_blank" class="btn-secondary">
-          See Details
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
+        <div class="cta-row">
+          <a [href]="project.link" target="_blank" class="btn-secondary">
+            See Details
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          @if (project.githubUrl) {
+            <a [href]="project.githubUrl" target="_blank" title="View on GitHub" class="btn-icon">
+              <i class="fab fa-github"></i>
+            </a>
+          }
+
+          @if (project.figmaUrl) {
+            <a [href]="project.figmaUrl" target="_blank" title="View Figma Design" class="btn-icon">
+              <i class="fab fa-figma"></i>
+            </a>
+          }
+        </div>
       </div>
 
     </div>
   }
-
 
 </section>

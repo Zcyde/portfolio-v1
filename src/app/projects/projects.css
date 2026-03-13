@@ -162,6 +162,17 @@
   line-height: 1.05;
   color: #b12930;
   letter-spacing: -0.03em;
+  margin-bottom: 0;
+}
+
+.info-subtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #b12930;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: -0.25rem;
 }
 
 .info-desc {
@@ -169,6 +180,26 @@
   color: #000000;
   line-height: 1.8;
   font-weight: 300;
+  margin-top: -0.25rem;
+}
+
+info-role {
+  border-left: 3px solid #b12930;
+  padding-left: 0.75rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.info-role strong {
+  font-weight: 700;
+  color: #b12930;
+  display: block;
+}
+
+.info-role p {
+  margin: 0;
 }
 
 /* ── Tech Tags ── */
@@ -300,13 +331,44 @@
   background: #ffffff;
 }
 
-.row-title { font-size: 1.5rem; font-weight: 700; color: #b12930; }
+.row-title { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: #b12930; 
+   margin-bottom: 0;
+}
 
 .row-desc {
   font-size: 0.875rem;
   color: #000000;
   line-height: 1.7;
   font-weight: 300;
+  margin-top: -0.25rem;
+}
+
+.row-subtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #b12930;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: -1rem;
+}
+
+.row-role {
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  font-weight: 300;
+  border-left: 3px solid #b12930;
+  padding-left: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.row-role strong {
+  font-weight: 700;
+  color: #b12930;
 }
 
 .btn-secondary {
@@ -329,6 +391,34 @@
 
 .btn-secondary:hover {
   background-color: #8a2429;
+  transform: scale(1.05);
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 15px;
+  border: 1.5px solid rgba(177, 41, 48, 0.3);
+  color: #b12930;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  font-size: 1.1rem;
+}
+
+.btn-icon:hover {
+  background-color: #b12930;
+  color: white;
+  border-color: #b12930;
   transform: scale(1.05);
 }
 
