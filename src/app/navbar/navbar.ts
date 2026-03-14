@@ -26,7 +26,9 @@ export class Navbar implements OnInit, AfterViewInit, OnDestroy {
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
     private scrollService: ScrollService
-  ) {
+  ) 
+  
+  {
     effect(() => {
       const section = this.scrollService.activeSection();
       this.activeSection = section;

@@ -27,29 +27,32 @@
       </li>
     </ul>
 
-    <!-- <button class="theme-toggle" (click)="toggleTheme()">
-      
-      <svg *ngIf="!isDarkMode" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <button class="dark-mode eclipse-toggle" (click)="toggleTheme()" [class.is-dark]="isDarkMode" aria-label="Toggle theme">
+      <svg class="eclipse-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="eclipseMask">
+            <rect width="36" height="36" fill="white"/>
+            <circle class="eclipse-moon-mask" cx="28" cy="18" r="8" fill="black"/>
+          </mask>
+        </defs>
+        <!-- Sun rays -->
+        <g class="eclipse-rays">
+          <line x1="18" y1="1"  x2="18" y2="5"  stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18" y1="31" x2="18" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="1"  y1="18" x2="5"  y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31" y1="18" x2="35" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.5"  y1="4.5"  x2="7.3"  y2="7.3"  stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="28.7" y1="28.7" x2="31.5" y2="31.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31.5" y1="4.5"  x2="28.7" y2="7.3"  stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.5"  y1="31.5" x2="7.3"  y2="28.7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <!-- Sun body (masked by moon) -->
+        <circle cx="18" cy="18" r="8" fill="white" mask="url(#eclipseMask)"/>
+        <!-- Corona ring — glows during eclipse -->
+        <circle class="eclipse-corona" cx="18" cy="18" r="9" fill="none" stroke="rgba(255,210,60,0)" stroke-width="2.5"/>
+        <!-- Moon disc -->
+        <circle class="eclipse-moon-disc" cx="28" cy="18" r="8" fill="rgba(210,220,240,0.12)"/>
       </svg>
-      
-      
-      <svg *ngIf="isDarkMode" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2=" 19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-    </button> -->
-
-    <button class="dark-mode" (click)="toggleTheme()">
-      <span *ngIf="!isDarkMode">🌙</span>
-      <span *ngIf="isDarkMode">☀️</span>
     </button>
 
     <!-- Burger Menu Button (mobile only) -->
@@ -78,15 +81,6 @@
         </li>
         <li>
           <a href="/contact" (click)="scrollToSection('contact', $event); setActive($event); closeMenu()" [class.active]="activeSection === 'contact'">CONTACT</a>
-        </li>
-
-                <!-- Add this at the bottom of .mobile-nav-links in the drawer: -->
-        <li class="mobile-divider"></li>
-        <li class="mobile-theme-toggle">
-          <button class="mobile-dark-mode" (click)="toggleTheme()">
-            <span>{{ isDarkMode ? '☀️' : '🌙' }}</span>
-            <span class="mobile-theme-label">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
-          </button>
         </li>
       </ul>
     </div>
